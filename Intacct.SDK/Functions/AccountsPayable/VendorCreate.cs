@@ -110,6 +110,8 @@ namespace Intacct.SDK.Functions.AccountsPayable
                 xml.WriteEndElement(); //RETURNTO
             }
 
+            WriteXmlContactListInfo(ref xml);
+
             xml.WriteElement("PAYMETHODKEY", PreferredPaymentMethod);
             xml.WriteElement("MERGEPAYMENTREQ", MergePaymentRequests);
             xml.WriteElement("PAYMENTNOTIFY", SendAutomaticPaymentNotification);

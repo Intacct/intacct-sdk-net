@@ -14,6 +14,7 @@
  */
 
 using System.Collections.Generic;
+using Intacct.SDK.Functions.Company;
 using Intacct.SDK.Xml;
 
 namespace Intacct.SDK.Functions.AccountsPayable
@@ -70,7 +71,7 @@ namespace Intacct.SDK.Functions.AccountsPayable
         public string ZipPostalCode;
 
         public string Country;
-        
+
         public string IsoCountryCode;
 
         public bool? ExcludedFromContactList;
@@ -112,6 +113,8 @@ namespace Intacct.SDK.Functions.AccountsPayable
         public string PayToContactName;
 
         public string ReturnToContactName;
+
+        public List<ContactListInfo> ContactList = new List<ContactListInfo>();
 
         public string PreferredPaymentMethod;
 
@@ -180,6 +183,17 @@ namespace Intacct.SDK.Functions.AccountsPayable
                 xml.WriteElementString("ISOCOUNTRYCODE", IsoCountryCode);
 
                 xml.WriteEndElement(); //MAILADDRESS
+            }
+        }
+
+        protected void WriteXmlContactListInfo(ref IaXmlWriter xml)
+        {
+            if (this.ContactList != null)
+            {
+                foreach (ContactListInfo contactListInfo in this.ContactList)
+                {
+                    contactListInfo.WriteXmlContactListInfo(ref xml);
+                }
             }
         }
     }

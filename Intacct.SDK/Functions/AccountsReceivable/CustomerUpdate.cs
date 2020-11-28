@@ -119,6 +119,8 @@ namespace Intacct.SDK.Functions.AccountsReceivable
                 xml.WriteEndElement(); //SHIPTO
             }
 
+            WriteXmlContactListInfo(ref xml);
+
             xml.WriteElement("OBJECTRESTRICTION", RestrictionType);
             if (RestrictedLocations.Count > 0)
             {

@@ -22,6 +22,7 @@ using Intacct.SDK.Functions;
 using Intacct.SDK.Tests.Xml;
 using Intacct.SDK.Xml;
 using Xunit;
+using Intacct.SDK.Functions.Company;
 
 namespace Intacct.SDK.Tests.Functions.AccountsReceivable
 {
@@ -122,6 +123,24 @@ namespace Intacct.SDK.Tests.Functions.AccountsReceivable
             <SHIPTO>
                 <CONTACTNAME>ship to</CONTACTNAME>
             </SHIPTO>
+            <CONTACT_LIST_INFO>
+                <CATEGORYNAME>Primary Contact</CATEGORYNAME>
+                <CONTACT>
+                    <NAME>primary</NAME>
+                </CONTACT>
+            </CONTACT_LIST_INFO>
+            <CONTACT_LIST_INFO>
+                <CATEGORYNAME>Billing Contact</CATEGORYNAME>
+                <CONTACT>
+                    <NAME>bill to</NAME>
+                </CONTACT>
+            </CONTACT_LIST_INFO>
+            <CONTACT_LIST_INFO>
+                <CATEGORYNAME>Shipping Contact</CATEGORYNAME>
+                <CONTACT>
+                    <NAME>ship to</NAME>
+                </CONTACT>
+            </CONTACT_LIST_INFO>
             <OBJECTRESTRICTION>Restricted</OBJECTRESTRICTION>
             <RESTRICTEDLOCATIONS>100#~#200</RESTRICTEDLOCATIONS>
             <RESTRICTEDDEPARTMENTS>D100#~#D200</RESTRICTEDDEPARTMENTS>
@@ -186,6 +205,12 @@ namespace Intacct.SDK.Tests.Functions.AccountsReceivable
                 PrimaryContactName = "primary",
                 BillToContactName = "bill to",
                 ShipToContactName = "ship to",
+                ContactList = new List<ContactListInfo> 
+                {
+                    new ContactListInfo { CategoryName = "Primary Contact", Contact = "primary" },
+                    new ContactListInfo { CategoryName = "Billing Contact", Contact = "bill to" },
+                    new ContactListInfo { CategoryName = "Shipping Contact", Contact = "ship to" },
+                },
                 RestrictionType = "Restricted",
                 RestrictedLocations = new List<string>()
                 {
