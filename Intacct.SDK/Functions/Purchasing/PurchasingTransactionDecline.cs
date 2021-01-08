@@ -33,7 +33,7 @@ namespace Intacct.SDK.Functions.Purchasing
             
             xml.WriteStartElement("PODOCUMENT");
             
-            xml.WriteElement("DOCID", ExternalId);
+            xml.WriteElement("DOCID", DocumentId);
             
             xml.WriteElement("COMMENT", Comment);
             

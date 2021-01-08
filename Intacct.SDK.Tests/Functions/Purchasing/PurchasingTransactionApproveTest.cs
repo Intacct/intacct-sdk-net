@@ -36,7 +36,7 @@ namespace Intacct.SDK.Tests.Functions.Purchasing
 
             PurchasingTransactionApprove record = new PurchasingTransactionApprove("unittest")
             {
-                ExternalId = "Purchase Order-PO0213",
+                DocumentId = "Purchase Order-PO0213",
                 Comment = "Final approval for the quarter"
             };
 

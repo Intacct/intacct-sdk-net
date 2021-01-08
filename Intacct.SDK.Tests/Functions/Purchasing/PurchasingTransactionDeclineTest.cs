@@ -37,7 +37,7 @@ namespace Intacct.SDK.Tests.Functions.Purchasing
             PurchasingTransactionDecline record = new PurchasingTransactionDecline("unittest")
 
             {
-                ExternalId = "Purchase Order-PO0213",
+                DocumentId = "Purchase Order-PO0213",
                 Comment = "Need to wait on this"
             };
 
