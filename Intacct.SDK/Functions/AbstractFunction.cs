@@ -40,7 +40,12 @@ namespace Intacct.SDK.Functions
             }
         }
 
-        protected AbstractFunction(string controlId = "")
+        protected AbstractFunction()
+        {
+            _controlId = Guid.NewGuid().ToString();
+        }
+
+        protected AbstractFunction(string controlId)
         {
             ControlId = controlId;
         }
