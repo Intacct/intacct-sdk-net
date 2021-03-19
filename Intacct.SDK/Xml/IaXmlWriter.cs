@@ -1,29 +1,27 @@
 ﻿/*
  * Copyright 2020 Sage Intacct, Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
- * use this file except in compliance with the License. You may obtain a copy 
+ * use this file except in compliance with the License. You may obtain a copy
  * of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
- * or in the "LICENSE" file accompanying this file. This file is distributed on 
- * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either 
- * express or implied. See the License for the specific language governing 
+ *
+ * or in the "LICENSE" file accompanying this file. This file is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
 
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Xml;
 
 namespace Intacct.SDK.Xml
 {
     public class IaXmlWriter : XmlWriter
     {
-
         public const string IntacctDateFormat = "MM/dd/yyyy";
 
         public const string IntacctDateTimeFormat = "MM/dd/yyyy HH:mm:ss";
@@ -31,140 +29,14 @@ namespace Intacct.SDK.Xml
         public const string IntacctMultiSelectGlue = "#~#";
 
         private readonly XmlWriter _writer;
-        
-        public override WriteState WriteState => _writer.WriteState;
 
         public IaXmlWriter(Stream output, XmlWriterSettings settings)
         {
             _writer = Create(output, settings);
         }
 
+        public override WriteState WriteState => _writer.WriteState;
 
-        public override void WriteStartDocument()
-        {
-            _writer.WriteStartDocument();
-        }
-
-        public override void WriteStartDocument(bool standalone)
-        {
-            _writer.WriteStartDocument(standalone);
-        }
-
-        public override void WriteEndDocument()
-        {
-            _writer.WriteEndDocument();
-        }
-
-        public override void WriteDocType(string name, string pubid, string sysid, string subset)
-        {
-            _writer.WriteDocType(name, pubid, sysid, subset);
-        }
-        
-        public new void WriteStartElement(string localName)
-        {
-            _writer.WriteStartElement(localName);
-        }
-
-        public new void WriteStartElement(string localName, string ns)
-        {
-            _writer.WriteStartElement(localName, ns);
-        }
-
-        public override void WriteStartElement(string prefix, string localName, string ns)
-        {
-            _writer.WriteStartElement(prefix, localName, ns);
-        }
-
-        public override void WriteEndElement()
-        {
-            _writer.WriteEndElement();
-        }
-
-        public override void WriteFullEndElement()
-        {
-            _writer.WriteFullEndElement();
-        }
-
-        public new void WriteStartAttribute(string localName)
-        {
-            _writer.WriteStartAttribute(localName);
-        }
-
-        public new void WriteStartAttribute(string localName, string ns)
-        {
-            _writer.WriteStartAttribute(localName, ns);
-        }
-
-        public override void WriteStartAttribute(string prefix, string localName, string ns)
-        {
-            _writer.WriteStartAttribute(prefix, localName, ns);
-        }
-
-        public override void WriteEndAttribute()
-        {
-            _writer.WriteEndAttribute();
-        }
-
-        public override void WriteCData(string text)
-        {
-            _writer.WriteCData(text);
-        }
-
-        public override void WriteComment(string text)
-        {
-            _writer.WriteComment(text);
-        }
-
-        public override void WriteProcessingInstruction(string name, string text)
-        {
-            _writer.WriteProcessingInstruction(name, text);
-        }
-
-        public override void WriteEntityRef(string name)
-        {
-            _writer.WriteEntityRef(name);
-        }
-
-        public override void WriteCharEntity(char ch)
-        {
-            _writer.WriteCharEntity(ch);
-        }
-
-        public override void WriteWhitespace(string ws)
-        {
-            _writer.WriteWhitespace(ws);
-        }
-
-        public override void WriteString(string text)
-        {
-            _writer.WriteString(text);
-        }
-
-        public override void WriteSurrogateCharEntity(char lowChar, char highChar)
-        {
-            _writer.WriteSurrogateCharEntity(lowChar, highChar);
-        }
-
-        public override void WriteChars(char[] buffer, int index, int count)
-        {
-            _writer.WriteChars(buffer, index, count);
-        }
-        
-        public override void WriteRaw(char[] buffer, int index, int count)
-        {
-            _writer.WriteRaw(buffer, index, count);
-        }
-
-        public override void WriteRaw(string data)
-        {
-            _writer.WriteRaw(data);
-        }
-
-        public override void WriteBase64(byte[] buffer, int index, int count)
-        {
-            _writer.WriteBase64(buffer, index, count);
-        }
-        
         public override void Flush()
         {
             _writer.Flush();
@@ -175,7 +47,118 @@ namespace Intacct.SDK.Xml
             return _writer.LookupPrefix(ns);
         }
 
-        // XML Helper Functions
+        public void WriteAttribute(string localName, string value, bool writeNull = false)
+        {
+            if (!string.IsNullOrEmpty(value) || writeNull == true)
+            {
+                _writer.WriteAttributeString(localName, value);
+            }
+        }
+
+        public void WriteAttribute(string localName, int? value, bool writeNull = false)
+        {
+            if (value == null)
+            {
+                if (writeNull == true)
+                {
+                    _writer.WriteAttributeString(localName, "");
+                }
+            }
+            else
+            {
+                _writer.WriteAttributeString(localName, value.ToString());
+            }
+        }
+
+        public void WriteAttribute(string localName, bool value)
+        {
+            string val = (value == true) ? "true" : "false";
+            _writer.WriteAttributeString(localName, val);
+        }
+
+        public override void WriteBase64(byte[] buffer, int index, int count)
+        {
+            _writer.WriteBase64(buffer, index, count);
+        }
+
+        public override void WriteCData(string text)
+        {
+            _writer.WriteCData(text);
+        }
+
+        public override void WriteCharEntity(char ch)
+        {
+            _writer.WriteCharEntity(ch);
+        }
+
+        public override void WriteChars(char[] buffer, int index, int count)
+        {
+            _writer.WriteChars(buffer, index, count);
+        }
+
+        public override void WriteComment(string text)
+        {
+            _writer.WriteComment(text);
+        }
+
+        public void WriteCustomFieldsExplicit(Dictionary<string, dynamic> customFields)
+        {
+            if (customFields.Count > 0)
+            {
+                WriteStartElement("customfields");
+                foreach (KeyValuePair<string, dynamic> customField in customFields)
+                {
+                    WriteStartElement("customfield");
+                    WriteElement("customfieldname", customField.Key, true);
+
+                    if (customField.Value == null)
+                    {
+                        WriteEmptyElement("customfieldvalue");
+                    }
+                    else
+                    {
+                        WriteElement("customfieldvalue", customField.Value, true);
+                    }
+                    WriteEndElement(); //customfield
+                }
+                WriteEndElement(); //customfields
+            }
+        }
+
+        public void WriteCustomFieldsImplicit(Dictionary<string, dynamic> customFields)
+        {
+            if (customFields.Count > 0)
+            {
+                foreach (KeyValuePair<string, dynamic> customField in customFields)
+                {
+                    if (customField.Value == null)
+                    {
+                        WriteEmptyElement(customField.Key);
+                    }
+                    else
+                    {
+                        WriteElement(customField.Key, customField.Value, true);
+                    }
+                }
+            }
+        }
+
+        public void WriteDateMMddyyyy(DateTime date)
+        {
+            _writer.WriteRaw(date.ToString("MM/dd/yyyy"));
+        }
+
+        public void WriteDateSplitElements(DateTime date, bool writeNull = true)
+        {
+            WriteElement("year", date.ToString("yyyy"), writeNull);
+            WriteElement("month", date.ToString("MM"), writeNull);
+            WriteElement("day", date.ToString("dd"), writeNull);
+        }
+
+        public override void WriteDocType(string name, string pubid, string sysid, string subset)
+        {
+            _writer.WriteDocType(name, pubid, sysid, subset);
+        }
 
         public void WriteElement(string localName, string value, bool writeNull = false)
         {
@@ -193,6 +176,7 @@ namespace Intacct.SDK.Xml
             }
         }
 
+        // XML Helper Functions
         public void WriteElement(string localName, int value)
         {
             _writer.WriteElementString(localName, value.ToString());
@@ -257,7 +241,7 @@ namespace Intacct.SDK.Xml
                 }
             }
         }
-        
+
         public void WriteElement(string localName, DateTime value, string format = IntacctDateTimeFormat)
         {
             _writer.WriteElementString(localName, value == default(DateTime) ? "" : value.ToString(format));
@@ -283,85 +267,100 @@ namespace Intacct.SDK.Xml
             _writer.WriteStartElement(localName);
             _writer.WriteEndElement();
         }
-        
-        public void WriteAttribute(string localName, string value, bool writeNull = false)
-        {
-            if (!string.IsNullOrEmpty(value) || writeNull == true)
-            {
 
-                _writer.WriteAttributeString(localName, value);
-            }
+        public override void WriteEndAttribute()
+        {
+            _writer.WriteEndAttribute();
         }
 
-        public void WriteAttribute(string localName, int? value, bool writeNull = false)
+        public override void WriteEndDocument()
         {
-            if (value == null)
-            {
-                if (writeNull == true)
-                {
-                    _writer.WriteAttributeString(localName, "");
-                }
-            }
-            else
-            {
-                _writer.WriteAttributeString(localName, value.ToString());
-            }
+            _writer.WriteEndDocument();
         }
 
-        public void WriteAttribute(string localName, bool value)
+        public override void WriteEndElement()
         {
-            string val = (value == true) ? "true" : "false";
-            _writer.WriteAttributeString(localName, val);
+            _writer.WriteEndElement();
         }
 
-        public void WriteDateSplitElements(DateTime date, bool writeNull = true)
+        public override void WriteEntityRef(string name)
         {
-            WriteElement("year", date.ToString("yyyy"), writeNull);
-            WriteElement("month", date.ToString("MM"), writeNull);
-            WriteElement("day", date.ToString("dd"), writeNull);
+            _writer.WriteEntityRef(name);
         }
 
-        public void WriteCustomFieldsExplicit(Dictionary<string, dynamic> customFields)
+        public override void WriteFullEndElement()
         {
-            if (customFields.Count > 0)
-            {
-                WriteStartElement("customfields");
-                foreach (KeyValuePair<string, dynamic> customField in customFields)
-                {
-                    WriteStartElement("customfield");
-                    WriteElement("customfieldname", customField.Key, true);
-                    
-                    if (customField.Value == null)
-                    {
-                        WriteEmptyElement("customfieldvalue");
-                    }
-                    else
-                    {
-                        WriteElement("customfieldvalue", customField.Value, true);
-                    }
-                    WriteEndElement(); //customfield
-                }
-                WriteEndElement(); //customfields
-            }
+            _writer.WriteFullEndElement();
         }
 
-        public void WriteCustomFieldsImplicit(Dictionary<string, dynamic> customFields)
+        public override void WriteProcessingInstruction(string name, string text)
         {
-            if (customFields.Count > 0)
-            {
-                foreach (KeyValuePair<string, dynamic> customField in customFields)
-                {
-                    if (customField.Value == null)
-                    {
-                        WriteEmptyElement(customField.Key);
-                    }
-                    else
-                    {
-                        WriteElement(customField.Key, customField.Value, true);
-                    }
-                }
-            }
+            _writer.WriteProcessingInstruction(name, text);
         }
 
+        public override void WriteRaw(char[] buffer, int index, int count)
+        {
+            _writer.WriteRaw(buffer, index, count);
+        }
+
+        public override void WriteRaw(string data)
+        {
+            _writer.WriteRaw(data);
+        }
+
+        public new void WriteStartAttribute(string localName)
+        {
+            _writer.WriteStartAttribute(localName);
+        }
+
+        public new void WriteStartAttribute(string localName, string ns)
+        {
+            _writer.WriteStartAttribute(localName, ns);
+        }
+
+        public override void WriteStartAttribute(string prefix, string localName, string ns)
+        {
+            _writer.WriteStartAttribute(prefix, localName, ns);
+        }
+
+        public override void WriteStartDocument()
+        {
+            _writer.WriteStartDocument();
+        }
+
+        public override void WriteStartDocument(bool standalone)
+        {
+            _writer.WriteStartDocument(standalone);
+        }
+
+        public new void WriteStartElement(string localName)
+        {
+            _writer.WriteStartElement(localName);
+        }
+
+        public new void WriteStartElement(string localName, string ns)
+        {
+            _writer.WriteStartElement(localName, ns);
+        }
+
+        public override void WriteStartElement(string prefix, string localName, string ns)
+        {
+            _writer.WriteStartElement(prefix, localName, ns);
+        }
+
+        public override void WriteString(string text)
+        {
+            _writer.WriteString(text);
+        }
+
+        public override void WriteSurrogateCharEntity(char lowChar, char highChar)
+        {
+            _writer.WriteSurrogateCharEntity(lowChar, highChar);
+        }
+
+        public override void WriteWhitespace(string ws)
+        {
+            _writer.WriteWhitespace(ws);
+        }
     }
 }
