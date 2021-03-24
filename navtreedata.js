@@ -25,8 +25,9 @@
 var NAVTREE =
 [
   [ "Sage Intacct SDK for .NET", "index.html", [
-    [ "Namespace", "annotated.html", "annotated" ],
-    [ "Index", "classes.html", null ]
+    [ "Namespace", "namespaces.html", "namespaces" ],
+    [ "Index", "classes.html", null ],
+    [ "Classes", "annotated.html", "annotated" ]
   ] ]
 ];
 
@@ -37,11 +38,11 @@ var NAVTREEINDEX =
 "class_intacct_1_1_s_d_k_1_1_functions_1_1_accounts_receivable_1_1_abstract_customer.html#abcb0a276b20ca647e0074914ef537933",
 "class_intacct_1_1_s_d_k_1_1_functions_1_1_common_1_1_new_query_1_1_query_filter_1_1_abstract_operator.html#a023d10d319b02b2b6d106c9f505db15a",
 "class_intacct_1_1_s_d_k_1_1_functions_1_1_company_1_1_abstract_contact.html",
-"class_intacct_1_1_s_d_k_1_1_functions_1_1_contracts_rev_mgmt_1_1_contract_update.html#a4296691b1bd48fac61483f288a5eb0d7",
-"class_intacct_1_1_s_d_k_1_1_functions_1_1_general_ledger_1_1_abstract_gl_entry.html",
-"class_intacct_1_1_s_d_k_1_1_functions_1_1_inventory_control_1_1_warehouse_update.html",
-"class_intacct_1_1_s_d_k_1_1_functions_1_1_purchasing_1_1_abstract_purchasing_transaction.html#a0d64c0b35db9531b4415f54eb82f5624",
-"interface_intacct_1_1_s_d_k_1_1_functions_1_1_common_1_1_new_query_1_1_i_query_function.html#a05256099fb92f981e331ff9f4b1924c4"
+"class_intacct_1_1_s_d_k_1_1_functions_1_1_contracts_rev_mgmt_1_1_contract_update.html",
+"class_intacct_1_1_s_d_k_1_1_functions_1_1_general_ledger_1_1_abstract_gl_batch.html#af7dc4ef75ce17380c3c6d742e0b6f507",
+"class_intacct_1_1_s_d_k_1_1_functions_1_1_inventory_control_1_1_warehouse_delete.html#a2ddf5a0f4da295890e3865f12f6b237f",
+"class_intacct_1_1_s_d_k_1_1_functions_1_1_purchasing_1_1_abstract_purchasing_transaction.html#a00d3c518267e5e90df6d0853644a0b8a",
+"interface_intacct_1_1_s_d_k_1_1_functions_1_1_common_1_1_new_query_1_1_i_query_function.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
