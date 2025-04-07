@@ -86,15 +86,15 @@ namespace Intacct.SDK.Xml
         
         private HttpMessageHandler GetHttpMessageHandler()
         {
-            if (this.ClientConfig.MockHandler != null)
+            if (this.ClientConfig.HttpMessageHandler != null)
             {
                 if (this.ClientConfig.Logger != null)
                 {
-                    return new LoggingHandler(this.ClientConfig.MockHandler, this.ClientConfig.Logger, this.ClientConfig.LogMessageFormatter, this.ClientConfig.LogLevel);
+                    return new LoggingHandler(this.ClientConfig.HttpMessageHandler, this.ClientConfig.Logger, this.ClientConfig.LogMessageFormatter, this.ClientConfig.LogLevel);
                 }
                 else
                 {
-                    return this.ClientConfig.MockHandler;
+                    return this.ClientConfig.HttpMessageHandler;
                 }
             }
             else

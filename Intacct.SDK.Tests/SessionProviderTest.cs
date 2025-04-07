@@ -68,7 +68,7 @@ namespace Intacct.SDK.Tests
                 CompanyId = "testcompany",
                 UserId = "testuser",
                 UserPassword = "testpass",
-                MockHandler = mockHandler,
+                HttpMessageHandler = mockHandler,
             };
 
             ClientConfig sessionCreds = await SessionProvider.Factory(config);
@@ -134,7 +134,7 @@ namespace Intacct.SDK.Tests
                 EntityId= "testentity",
                 UserId = "testuser",
                 UserPassword = "testpass",
-                MockHandler = mockHandler,
+                HttpMessageHandler = mockHandler,
             };
 
             ClientConfig sessionCreds = await SessionProvider.Factory(config);
@@ -198,7 +198,7 @@ namespace Intacct.SDK.Tests
                 SenderPassword = "pass123!",
                 SessionId = "fAkESesSiOnId..",
                 EndpointUrl = "https://unittest.intacct.com/ia/xml/xmlgw.phtml",
-                MockHandler = mockHandler,
+                HttpMessageHandler = mockHandler,
             };
 
             ClientConfig sessionCreds = await SessionProvider.Factory(config);
@@ -262,7 +262,7 @@ namespace Intacct.SDK.Tests
                 SenderPassword = "pass123!",
                 SessionId = "fAkESesSiOnId..",
                 EndpointUrl = "https://unittest.intacct.com/ia/xml/xmlgw.phtml",
-                MockHandler = mockHandler,
+                HttpMessageHandler = mockHandler,
                 EntityId = "testentity",
             };
 
@@ -327,7 +327,7 @@ namespace Intacct.SDK.Tests
                 SenderPassword = "pass123!",
                 SessionId = "EntityAsession..",
                 EndpointUrl = "https://unittest.intacct.com/ia/xml/xmlgw.phtml",
-                MockHandler = mockHandler,
+                HttpMessageHandler = mockHandler,
                 EntityId = "entityB",
             };
 
@@ -393,7 +393,7 @@ namespace Intacct.SDK.Tests
             {
                 SessionId = "fAkESesSiOnId..",
                 EndpointUrl = "https://unittest.intacct.com/ia/xml/xmlgw.phtml",
-                MockHandler = mockHandler,
+                HttpMessageHandler = mockHandler,
             };
 
             ClientConfig sessionCreds = await SessionProvider.Factory(config);

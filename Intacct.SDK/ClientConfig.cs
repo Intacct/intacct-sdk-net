@@ -18,6 +18,9 @@ using Intacct.SDK.Logging;
 using Intacct.SDK.Xml.Request;
 using Microsoft.Extensions.Logging;
 
+using System;
+using System.Net.Http;
+
 namespace Intacct.SDK
 {
     public class ClientConfig
@@ -51,8 +54,15 @@ namespace Intacct.SDK
 
         public MessageFormatter LogMessageFormatter;
 
-        public MockHandler MockHandler;
+        public HttpMessageHandler HttpMessageHandler;
 
+        [Obsolete("Use HttpMessageHandler instead.")]
+        public MockHandler MockHandler
+        {
+            get { return HttpMessageHandler as MockHandler;}
+            set { HttpMessageHandler = value;}
+        }
+         
         public ClientConfig()
         {
             this.LogLevel = LogLevel.Debug;

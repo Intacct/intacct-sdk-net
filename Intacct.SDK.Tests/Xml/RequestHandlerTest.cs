@@ -76,7 +76,7 @@ namespace Intacct.SDK.Tests.Xml
                 SenderId = "testsenderid",
                 SenderPassword = "pass123!",
                 SessionId = "testsession..",
-                MockHandler = mockHandler,
+                HttpMessageHandler = mockHandler,
             };
 
             RequestConfig requestConfig = new RequestConfig()
@@ -130,7 +130,7 @@ namespace Intacct.SDK.Tests.Xml
                 SenderId = "testsenderid",
                 SenderPassword = "pass123!",
                 SessionId = "testsession..",
-                MockHandler = mockHandler,
+                HttpMessageHandler = mockHandler,
             };
 
             RequestConfig requestConfig = new RequestConfig()
@@ -235,7 +235,7 @@ namespace Intacct.SDK.Tests.Xml
                 SenderId = "testsenderid",
                 SenderPassword = "pass123!",
                 SessionId = "testsession..",
-                MockHandler = mockHandler,
+                HttpMessageHandler = mockHandler,
             };
 
             RequestConfig requestConfig = new RequestConfig();
@@ -292,7 +292,7 @@ namespace Intacct.SDK.Tests.Xml
                 SenderId = "testsenderid",
                 SenderPassword = "pass123!",
                 SessionId = "testsession..",
-                MockHandler = mockHandler,
+                HttpMessageHandler = mockHandler,
             };
 
             RequestConfig requestConfig = new RequestConfig();
@@ -345,7 +345,7 @@ namespace Intacct.SDK.Tests.Xml
                 CompanyId = "badcompany",
                 UserId = "baduser",
                 UserPassword = "badpass",
-                MockHandler = mockHandler,
+                HttpMessageHandler = mockHandler,
             };
 
             RequestConfig requestConfig = new RequestConfig();
@@ -382,7 +382,7 @@ namespace Intacct.SDK.Tests.Xml
                 SenderId = "testsenderid",
                 SenderPassword = "pass123!",
                 SessionId = "testsession..",
-                MockHandler = mockHandler,
+                HttpMessageHandler = mockHandler,
             };
 
             RequestConfig requestConfig = new RequestConfig();
@@ -460,7 +460,7 @@ namespace Intacct.SDK.Tests.Xml
                 SenderId = "testsenderid",
                 SenderPassword = "pass123!",
                 SessionId = "testsession..",
-                MockHandler = mockHandler,
+                HttpMessageHandler = mockHandler,
          //       Logger = LogManager.GetLogger(guid),
             };
 
@@ -522,7 +522,7 @@ namespace Intacct.SDK.Tests.Xml
                 SenderId = "testsenderid",
                 SenderPassword = "pass123!",
                 SessionId = "testsession..",
-                MockHandler = mockHandler,
+                HttpMessageHandler = mockHandler,
                // LoggerFactory = new LogFactory(),
                  //   Logger = LogFactory<Program> //LogManager.GetLogger(guid),
             };

@@ -76,7 +76,7 @@ namespace Intacct.SDK.Tests
                 SenderId = "testsender",
                 SenderPassword = "testsendpass",
                 SessionId = "testsession..",
-                MockHandler = mockHandler,
+                HttpMessageHandler = mockHandler,
             };
 
             OnlineClient client = new OnlineClient(clientConfig);
@@ -140,7 +140,7 @@ namespace Intacct.SDK.Tests
                 SenderId = "testsender",
                 SenderPassword = "testsendpass",
                 SessionId = "testsession..",
-                MockHandler = mockHandler,
+                HttpMessageHandler = mockHandler,
             };
 
             OnlineClient client = new OnlineClient(clientConfig);
@@ -223,7 +223,7 @@ namespace Intacct.SDK.Tests
                 SenderId = "testsender",
                 SenderPassword = "testsendpass",
                 SessionId = "testsession..",
-                MockHandler = mockHandler,
+                HttpMessageHandler = mockHandler,
             };
 
             RequestConfig requestConfig = new RequestConfig()
@@ -303,7 +303,7 @@ namespace Intacct.SDK.Tests
                 SenderId = "testsender",
                 SenderPassword = "testsendpass",
                 SessionId = "testsession..",
-                MockHandler = mockHandler,
+                HttpMessageHandler = mockHandler,
            //     Logger = LogManager.GetLogger(guid),
             };
 
