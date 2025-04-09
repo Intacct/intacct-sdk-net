@@ -42,7 +42,11 @@ namespace Intacct.SDK.Xml
             Stream stream = new MemoryStream();
             XmlWriterSettings xmlSettings = new XmlWriterSettings
             {
-                Encoding = this.Encoding
+                Encoding = this.Encoding,
+                Indent = false,
+                NewLineHandling = NewLineHandling.Replace,
+                NewLineOnAttributes = false
+                NewLineChars = ""
             };
 
             IaXmlWriter xml = new IaXmlWriter(stream, xmlSettings);
