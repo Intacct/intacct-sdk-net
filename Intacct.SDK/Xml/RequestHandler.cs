@@ -99,10 +99,7 @@ namespace Intacct.SDK.Xml
             }
             else
             {
-                HttpClientHandler httpClientHandler = new HttpClientHandler()
-                {
-                    AutomaticDecompression = System.Net.DecompressionMethods.GZip | System.Net.DecompressionMethods.Deflate
-                };
+                HttpClientHandler httpClientHandler = new HttpClientHandler();
                 
                 if (this.ClientConfig.Logger != null)
                 {
