@@ -32,7 +32,7 @@ namespace Intacct.SDK.Functions.Common.Query.Comparison.InList
             List<string> pieces = new List<string>();
             foreach (string piece in ValuesList)
             {
-                pieces.Add("'" + piece.Replace("'", "\'") + "'");
+                pieces.Add("'" + piece.Replace("'", "\\'") + "'");
             }
             
             clause =  Field + notClause + " IN (" + string.Join(",", pieces) + ")";

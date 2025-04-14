@@ -54,7 +54,7 @@ namespace Intacct.SDK.Tests.Functions.Common.Query.Comparison.LessThan
                 Value = "Bob's Pizza, Inc.",
             };
             
-            Assert.Equal("VENDORNAME < 'Bob\'s Pizza, Inc.'", condition.ToString());
+            Assert.Equal(@"VENDORNAME < 'Bob\'s Pizza, Inc.'", condition.ToString());
         }
     }
 }

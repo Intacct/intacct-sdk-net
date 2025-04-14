@@ -25,7 +25,7 @@ namespace Intacct.SDK.Functions.Common.Query.Comparison.Like
                 clause = "NOT ";
             }
             
-            clause = clause + Field + " LIKE '" + Value.Replace("'", "\'") + "'";
+            clause = clause + Field + " LIKE '" + Value.Replace("'", "\\'") + "'";
 
             return clause;
         }

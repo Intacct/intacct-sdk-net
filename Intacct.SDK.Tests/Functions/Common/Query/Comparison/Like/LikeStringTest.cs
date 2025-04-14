@@ -54,7 +54,7 @@ namespace Intacct.SDK.Tests.Functions.Common.Query.Comparison.Like
                 Value = "%ob's Pizza%",
             };
             
-            Assert.Equal("VENDORNAME LIKE '%ob\'s Pizza%'", condition.ToString());
+            Assert.Equal(@"VENDORNAME LIKE '%ob\'s Pizza%'", condition.ToString());
         }
     }
 }

@@ -70,7 +70,7 @@ namespace Intacct.SDK.Tests.Functions.Common.Query.Comparison.InList
                 }
             };
             
-            Assert.Equal("VENDORID IN ('bob\'s pizza','bill\'s pizza','sally\'s pizza')", condition.ToString());
+            Assert.Equal(@"VENDORID IN ('bob\'s pizza','bill\'s pizza','sally\'s pizza')", condition.ToString());
         }
         
         [Fact]

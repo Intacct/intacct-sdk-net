@@ -25,7 +25,7 @@ namespace Intacct.SDK.Functions.Common.Query.Comparison.EqualTo
                 clause = "NOT ";
             }
             
-            clause = clause + Field + " = '" + Value.Replace("'", "\'") + "'";
+            clause = clause + Field + " = '" + Value.Replace("'", "\\'") + "'";
 
             return clause;
         }
